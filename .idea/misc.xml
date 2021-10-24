@@ -4,8 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dog_image.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/dog_list.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_1.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_2.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.7733619340276884" />
+        <entry key="app/src/main/res/layout/item_dog_image.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/item_dog_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_dog_name.xml" value="0.125" />
       </map>
     </option>
   </component>
