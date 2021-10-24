@@ -5,5 +5,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Practice"
+rootProject.name = "MADdog"
 include ':app'

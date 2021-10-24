@@ -3,24 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment1">
+    app:startDestination="@id/fragment_dog_list">
 
     <fragment
-        android:id="@+id/fragment1"
-        android:name="com.example.practice.view.Fragment1"
-        android:label="fragment_1"
-        tools:layout="@layout/fragment_1" >
+        android:id="@+id/fragment_dog_list"
+        android:name="com.demo.MADdog.view.FragmentDogList"
+        tools:layout="@layout/dog_list" >
         <action
-            android:id="@+id/action_fragment1_to_fragment2"
-            app:destination="@id/fragment2" />
+            android:id="@+id/action_fragment_doglist_to_fragment_dogimage"
+            app:destination="@id/fragment_dog_image" />
     </fragment>
     <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.practice.view.Fragment2"
-        android:label="fragment_2"
-        tools:layout="@layout/fragment_2" >
-        <action
-            android:id="@+id/action_fragment2_to_fragment1"
-            app:destination="@id/fragment1" />
-    </fragment>
+        android:id="@+id/fragment_dog_image"
+        android:name="com.demo.MADdog.view.FragmentDogImage"
+        tools:layout="@layout/dog_image" />
 </navigation>

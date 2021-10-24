@@ -1,4 +1,4 @@
-package com.example.practice.repo
+package com.demo.MADdog.repo
 
 import android.content.Context
 import androidx.room.Database
@@ -12,7 +12,7 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         private var service: AppDatabase? = null
 
-        //@Synchronized
+        @Synchronized
         fun getDbService(context: Context): AppDatabase {
             if (service == null) {
                 service = Room.databaseBuilder(context, AppDatabase::class.java,"database-dog").build()

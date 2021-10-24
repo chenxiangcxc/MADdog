@@ -1,12 +1,12 @@
-package com.example.practice
+package com.demo.MADdog
 
-import androidx.room.Room
+import androidx.room.*
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.practice.repo.AppDatabase
-import com.example.practice.repo.DogDao
-import com.example.practice.repo.DogEntity
-import junit.framework.Assert
+import com.demo.MADdog.repo.AppDatabase
+import com.demo.MADdog.repo.DogDao
+import com.demo.MADdog.repo.DogEntity
+import org.junit.Assert
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.After
@@ -22,7 +22,7 @@ import org.junit.runner.RunWith
 class DbTest {
     private lateinit var db: AppDatabase
     private lateinit var dao: DogDao
-    private val dog = DogEntity(1, "chou chou")
+    private val dog = DogEntity("chow", "www.url1.com")
 
     @Before
     fun setUp() {
@@ -32,10 +32,18 @@ class DbTest {
     }
 
     @Test
-    fun testDb() = runBlocking {
+    fun testDogDb() = runBlocking {
         dao.insertDog(dog)
-        val name = dao.getDogName(1)
-        Assert.assertEquals(name, "chou chou")
+        val name = dao.getDogNameList()[0]
+        Assert.assertEquals(name, "chow")
+
+        var url = dao.getDogImageUrl(name)
+        Assert.assertEquals(url, "www.url1.com")
+
+        dog.url = "www.url2.com"
+        dao.updateDog(dog)
+        url = dao.getDogImageUrl(name)
+        Assert.assertEquals(url, "www.url2.com")
     }
 
     @After

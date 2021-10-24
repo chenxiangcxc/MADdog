@@ -1,4 +1,4 @@
-package com.example.practice.repo
+package com.demo.MADdog.repo
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,15 +8,11 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    // getWithParamExample(3, "desc") == "group/3/users?sort=decs"
-    @GET("group/{id}/users")
-    suspend fun getWithParamExample(@Path("id") groupId: Int, @Query("sort") sort: String)
+    @GET("breed/terrier/{dog_name}/images")
+    suspend fun getDogImageUrlList(@Path("dog_name") dogName: String) : Response<List<String>>
 
-    @POST("user/new")
-    suspend fun postWithBodyExample(@Body user: String)
-
-    @GET("breed/hound/list")
-    suspend fun listBreed(): Response<List<String>>
+    @GET("breed/terrier/list")
+    suspend fun getDogNameList(): Response<List<String>>
 
     companion object {
         private const val BASE_URL = "https://dog.ceo/api/"
