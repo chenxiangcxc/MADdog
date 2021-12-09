@@ -5,15 +5,15 @@ import android.content.Context
 
 class App : Application() {
     companion object {
-        var _context: Application? = null
+        private var context: Application? = null
 
         fun getContext(): Context {
-            return _context!!
+            return context!!
         }
     }
 
     override fun onCreate() {
         super.onCreate()
-        _context = this
+        context = this
     }
 }

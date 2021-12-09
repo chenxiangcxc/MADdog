@@ -25,12 +25,10 @@ class DogAdapter(private val clickListener: ((String) -> Unit)? = null) :
         private val textView: TextView = itemView.findViewById(R.id.dog_name)
 
         fun bind(dogName: String, clickListener: ((String) -> Unit)?) {
-            with(itemView) {
-                textView.text = dogName
-                itemView.setOnClickListener {
-                    clickListener?.run {
-                        this(dogName)
-                    }
+            textView.text = dogName
+            itemView.setOnClickListener {
+                clickListener?.run {
+                    this(dogName)
                 }
             }
         }

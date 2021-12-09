@@ -1,7 +1,7 @@
 package com.demo.MADdog
 
 import com.demo.MADdog.repo.ApiService
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 

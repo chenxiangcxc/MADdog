@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 
 class FragmentDogImage : Fragment() {
 
-    private lateinit var url: String
     private val viewModel: DogViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {

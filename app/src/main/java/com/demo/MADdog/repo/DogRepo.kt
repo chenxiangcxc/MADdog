@@ -2,7 +2,6 @@ package com.demo.MADdog.repo
 
 import android.content.Context
 import android.util.Log
-import com.demo.MADdog.App
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -23,7 +22,7 @@ class DogRepo(context : Context) {
                     apiService.getDogNameList().message
                 } catch(e: Exception) {
                     Log.e("API error", "Fail to get dog name list!")
-                    emptyList<String>()
+                    emptyList()
                 }
 
             dogNameList.forEach {
@@ -37,7 +36,7 @@ class DogRepo(context : Context) {
     suspend fun getDogImageUrl(name: String): Flow<String> = flow {
         var dogUrl = dogDao.getDogImageUrl(name)
 
-        if (dogUrl.isNullOrEmpty()) {
+        if (dogUrl.isEmpty()) {
             dogUrl =
                 try {
                     apiService.getDogImageUrlList(name).message[0]

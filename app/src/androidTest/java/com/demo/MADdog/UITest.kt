@@ -16,7 +16,6 @@ import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.IdlingRegistry
 import com.demo.MADdog.view.FragmentDogList
 import org.junit.After
-import org.junit.Assert.assertEquals
 import org.junit.Before
 
 
@@ -28,8 +27,8 @@ import org.junit.Before
 @RunWith(AndroidJUnit4::class)
 class UITest {
 
-    lateinit var idlingResource: IdlingResource
-    lateinit var scenaro: FragmentScenario<FragmentDogList>
+    private lateinit var idlingResource: IdlingResource
+    private lateinit var scenaro: FragmentScenario<FragmentDogList>
 
     @Before
     fun setUp() {
