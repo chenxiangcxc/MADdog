@@ -13,15 +13,17 @@ class DogRepo(context : Context) {
     private val appDatabase = AppDatabase.getDbService(context)
     private val dogDao = appDatabase.dogDao()
 
-    suspend fun getDogNameList(): Flow<List<String>> = flow {
+    suspend fun getDogNameList(): ApiResult<List<String>> {
         var dogNameList = dogDao.getDogNameList()
+        lateinit var exception: Exception
 
         if (dogNameList.isEmpty()) {
             dogNameList =
                 try {
                     apiService.getDogNameList().message
-                } catch(e: Exception) {
+                } catch (e: Exception) {
                     Log.e("API error", "Fail to get dog name list!")
+                    exception = buildException(e)
                     emptyList()
                 }
 
@@ -30,8 +32,12 @@ class DogRepo(context : Context) {
             }
         }
 
-        emit(dogNameList)
-    }.flowOn(Dispatchers.IO)
+        if (dogNameList.isNotEmpty()) {
+            return ApiResult.Success(dogNameList)
+        } else {
+            return ApiResult.Error(exception)
+        }
+    }
 
     suspend fun getDogImageUrl(name: String): Flow<String> = flow {
         var dogUrl = dogDao.getDogImageUrl(name)

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.demo.MADdog.viewmodel.DogViewModel
@@ -41,10 +42,17 @@ class FragmentDogList : Fragment() {
         tv.text = getString(R.string.loading)
         rv?.layoutManager = LinearLayoutManager(context)
         rv?.adapter = adapter
+        rv?.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         viewModel.dogNameList.observe(viewLifecycleOwner) {
             tv.text = getString(R.string.dog_count, it.size)
             adapter.submitList(it)
+        }
+
+        viewModel.dogNameListError.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                tv.text = it
+            }
         }
     }
 
