@@ -32,10 +32,10 @@ class DogRepo(context : Context) {
             }
         }
 
-        if (dogNameList.isNotEmpty()) {
-            return ApiResult.Success(dogNameList)
+        return if (dogNameList.isNotEmpty()) {
+            ApiResult.Success(dogNameList)
         } else {
-            return ApiResult.Error(exception)
+            ApiResult.Error(exception)
         }
     }
 
