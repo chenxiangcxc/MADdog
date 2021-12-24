@@ -1,6 +1,6 @@
 package com.demo.MADdog.repo
 
-import com.google.gson.JsonParseException
+import com.squareup.moshi.JsonDataException
 import org.json.JSONException
 import retrofit2.HttpException
 import java.io.IOException
@@ -21,7 +21,7 @@ fun buildException(e: Throwable): Exception {
         Exception("Request Timeout")
     } else if (e is IOException) {
         Exception("Network IO exception(${e.message})")
-    } else if (e is JsonParseException || e is JSONException) {
+    } else if (e is JsonDataException || e is JSONException) {
         Exception("Json parse error")
     } else {
         Exception("Server Error(${e.message})")
