@@ -63,8 +63,8 @@ dependencies {
 
     implementation "io.coil-kt:coil:1.4.0"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0-native-mt'
     debugImplementation "androidx.fragment:fragment-testing:1.4.0"
 }
 
