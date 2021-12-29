@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import coil.load
 import com.demo.MADdog.R
 import com.demo.MADdog.viewmodel.DogViewModel
@@ -40,8 +42,10 @@ class FragmentDogImage : Fragment() {
         //image.setImageResource(0)
 
         lifecycleScope.launch {
-            viewModel.dogImageUrl.collect {
-                image.load(it)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.dogImageUrl.collect {
+                    image.load(it)
+                }
             }
         }
     }
