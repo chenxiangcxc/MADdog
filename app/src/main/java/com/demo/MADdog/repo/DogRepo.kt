@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 class DogRepo(context : Context) {
 
@@ -13,7 +14,7 @@ class DogRepo(context : Context) {
     private val appDatabase = AppDatabase.getDbService(context)
     private val dogDao = appDatabase.dogDao()
 
-    suspend fun getDogNameList(): ApiResult<List<String>> {
+    suspend fun getDogNameList(): ApiResult<List<String>> = withContext(Dispatchers.IO) {
         var dogNameList = dogDao.getDogNameList()
         lateinit var exception: Exception
 
@@ -32,7 +33,7 @@ class DogRepo(context : Context) {
             }
         }
 
-        return if (dogNameList.isNotEmpty()) {
+        if (dogNameList.isNotEmpty()) {
             ApiResult.Success(dogNameList)
         } else {
             ApiResult.Error(exception)
